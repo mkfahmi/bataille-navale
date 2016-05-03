@@ -1,0 +1,113 @@
+body {
+    font-family: arial;
+    background-color: #010037;
+    color: white;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+header img {
+    height: 100px;
+    margin-right: 10px;
+}
+
+header h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+footer {
+    bottom: 0;
+    margin-top: 50px;
+    text-align : center;
+}
+
+footer a {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 1.2em;
+    text-decoration: none;
+    color: white;
+}
+
+a, #deconnexion input[type="submit"] {
+    font-size: 1.2em;
+    text-decoration: none;
+    color: white;
+    border: none;
+    background-color: transparent;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+input {
+    width: 200px;
+    line-height: 30px;
+    border: none;
+    font-size: 1.1em;
+}
+
+input[type="submit"] {
+    background-color: #042D57;
+    color: white;
+    line-height: 40px;
+    font-size: 1.3em;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+select {
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    font-size: 1.1em;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#deconnexion {
+    display: inline;
+}
+
+#deconnexion input {
+    width: 135px;
+}
+
+#connexion {
+    margin-top: 150px;
+    text-align: center;
+}
+
+#connexion img {
+    height: 170px;
+    width: auto;
+}
+
+#connexion h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+#inscription {
+    text-align: center;
+}
+
+#game {
+    text-align: center
+}
+
+#map {
+    width: 484px;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 72px;
+}
