@@ -19,7 +19,7 @@ function DB_connect()
 {
     try
     {
-        $bdd = new PDO('mysql:host=localhost;dbname=bataille-navale_db', 'root', '', array (PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
+        $bdd = new PDO('mysql:host=localhost;dbname=bataille-navale_db', 'db_username', 'db_password', array (PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return ($bdd);
     }
@@ -300,7 +300,7 @@ function new_match($login)
     $data = $req->fetch();
     $_SESSION['match']['id'] = $data['id'];
 
-    
+
     // On crée la map
     $map['A'] = [1 => 0, 2 => 0, 3 => 2, 4 => 2, 5 => 2, 6 => 2];
     $map['B'] = [1 => 0, 2 => 2, 3 => 0, 4 => 0, 5 => 0, 6 => 0];
@@ -308,7 +308,7 @@ function new_match($login)
     $map['D'] = [1 => 0, 2 => 2, 3 => 0, 4 => 0, 5 => 0, 6 => 0];
     $map['E'] = [1 => 0, 2 => 2, 3 => 0, 4 => 0, 5 => 1, 6 => 0];
     $map['F'] = [1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 1, 6 => 0];
-    
+
     /*
     // On crée la map2
     $map['A'] = [1 => 1, 2 => 1, 3 => 0, 4 => 0, 5 => 0, 6 => 0];
@@ -420,7 +420,7 @@ function show_round()
     }
     echo '</table>';
 
-    if ($round['actual_user'] == $_SESSION['match']['user_me'] || 
+    if ($round['actual_user'] == $_SESSION['match']['user_me'] ||
         ($round['actual_user'] == 0 && $_SESSION['match']['user_me'] != 1))
     {
         // On récupère le nom de l'ennemi dans la table users
@@ -473,7 +473,7 @@ function round_treatment()
     // Sinon, on récupère la map de $_SESSION pour la modifier et l'envoyer au nouvel enregistrement dans la table rounds
     $map = $_SESSION['match']['map'];
 
-    if (isset($_POST['coord'][0]) && isset($_POST['coord'][1]) && 
+    if (isset($_POST['coord'][0]) && isset($_POST['coord'][1]) &&
         isset($map[strtoupper($_POST['coord'][0])][$_POST['coord'][1]]))
     {
         if ($map[strtoupper($_POST['coord'][0])][$_POST['coord'][1]] == 0)
@@ -523,10 +523,10 @@ function round_treatment()
 
         // On crée un nouveau round dans la table rounds
         if ($_SESSION['match']['user_me'] == 1)
-            new_round($_SESSION['match']['id'], $_SESSION['match']['user_me'], $_SESSION['match']['user_me_score'], 
+            new_round($_SESSION['match']['id'], $_SESSION['match']['user_me'], $_SESSION['match']['user_me_score'],
                       $_SESSION['match']['user_enemy_score'], $map_str, date("Y-m-d H:i:s"));
         else
-            new_round($_SESSION['match']['id'], $_SESSION['match']['user_me'], $_SESSION['match']['user_enemy_score'], 
+            new_round($_SESSION['match']['id'], $_SESSION['match']['user_me'], $_SESSION['match']['user_enemy_score'],
                       $_SESSION['match']['user_me_score'], $map_str, date("Y-m-d H:i:s"));
     }
     else
